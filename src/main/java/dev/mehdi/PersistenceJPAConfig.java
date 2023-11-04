@@ -37,7 +37,7 @@ public class PersistenceJPAConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/spring_jpa?createDatabaseIfNotExist=true");
-        dataSource.setUsername("root");
+        dataSource.setUsername("mehdi");
         dataSource.setPassword("");
         return dataSource;
     }
@@ -62,7 +62,7 @@ public class PersistenceJPAConfig {
 
     Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 
         return properties;

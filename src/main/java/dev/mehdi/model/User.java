@@ -10,7 +10,7 @@ public class User {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Department department;
 
     public User() {}
@@ -36,6 +36,7 @@ public class User {
     }
 
     public void setDepartment(Department department) {
+        department.addUser(this);
         this.department = department;
     }
 }

@@ -15,8 +15,7 @@ public class Department {
 
     private String description;
 
-    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
     private List<User> users = new ArrayList<>();
 
     public Department() {}
