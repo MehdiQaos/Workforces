@@ -3,7 +3,7 @@ package dev.mehdi.model;
 import jakarta.persistence.*;
 
 @Entity
-public class User {
+public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -13,9 +13,9 @@ public class User {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Department department;
 
-    public User() {}
+    public Employee() {}
 
-    public User(String name) {
+    public Employee(String name) {
         this.name = name;
     }
 
