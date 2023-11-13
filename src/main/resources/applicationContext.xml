@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans
+       xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="entityManagerFactory"
@@ -24,6 +27,21 @@
         <property name="url" value="jdbc:mysql://localhost:3306/spring_jpa?createDatabaseIfNotExist=true"/>
         <property name="username" value="mehdi"/>
         <property name="password" value=""/>
+    </bean>
+
+    <jpa:repositories base-package="dev.mehdi.repository"/>
+
+    <context:component-scan base-package="dev.mehdi.repository">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+    </context:component-scan>
+
+    <bean name="departmentService" class="dev.mehdi.service.DepartmentService">
+        <constructor-arg index="0" ref="departmentRepository"/>
+    </bean>
+
+    <bean name="employeeService" class="dev.mehdi.service.EmployeeService">
+        <constructor-arg index="0" ref="employeeRepository"/>
+        <constructor-arg index="1" ref="departmentService"/>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

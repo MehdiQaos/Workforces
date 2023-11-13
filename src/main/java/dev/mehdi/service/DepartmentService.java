@@ -10,8 +10,8 @@ public class DepartmentService implements IDepartmentService {
 
     private final DepartmentRepository departmentRepository;
 
-    public DepartmentService(DepartmentRepository employeeRepository) {
-        this.departmentRepository = employeeRepository;
+    public DepartmentService(DepartmentRepository departmentRepository) {
+        this.departmentRepository = departmentRepository;
     }
 
     public Optional<Department> findByName(String name) {
